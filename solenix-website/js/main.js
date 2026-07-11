@@ -142,7 +142,7 @@
   observeReveals(document);
 
   /* ----- featured slider ----- */
-  const FEATURED = ["01", "05", "15", "08", "22"];
+  const FEATURED = ["01", "04", "08", "07", "09"];
   const slidesEl = document.getElementById("slides");
   const dotsEl = document.getElementById("sc-dots");
   if (slidesEl && dotsEl) {

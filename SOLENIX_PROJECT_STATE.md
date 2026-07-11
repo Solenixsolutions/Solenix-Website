@@ -1,8 +1,8 @@
-# SOLENIX WEBSITE — PROJECT STATE (build v10)
+# SOLENIX WEBSITE — PROJECT STATE (build v12)
 
 ## Project
 Static website for Solenix Solutions (solar mounting hardware manufacturer, Jalandhar, Punjab).
-Target hosting: GitHub Pages (free). No frameworks; vanilla HTML/CSS/JS. Current build: **v10** (footer build-tag shows version).
+Target hosting: GitHub Pages (free). No frameworks; vanilla HTML/CSS/JS. Current build: **v12** (footer build-tag shows version).
 
 ## Company facts used on site
 - Phone/WhatsApp: +91 94171 22679 → links use https://wa.me/919417122679
@@ -13,23 +13,24 @@ Target hosting: GitHub Pages (free). No frameworks; vanilla HTML/CSS/JS. Current
 - Logo: navy S-arrow mark → images/logo-mark.png (transparent bg) + favicon.png
 
 ## Products (js/products.js — single source of truth)
-23 products from "Our Product Range" PDF (photos extracted at 300 DPI, page order OCR-verified).
+**v11 replaced the old 23-product PDF catalog with user-supplied photos; v12 completed the range from the user's "Solar products" folder (July 2026, moved into the site and deleted).** Now 27 products.
+SKUs: 01 GI Solgrip Clamp · 02 HDG Mid Clamp · 03 GI Spring Nut · 04 GI Strut Base Plate · 05 Wedge Anchor Fastener · 06 Rawl Anchor Fastener · 07 Water Clips · 08 Rafters JSW/Apollo · 09 MC4 Connectors · 10 Alu Mid Clamp · 11 GI Mid Clamp · 12 GI End Clamp · 13 Anti-Theft Clamp · 14 GI B4 Base Plate · 15 GI C Lip Base Plate · 16 GI Degree Angle · 17 GI Strut Jointer · 18 GI Nut Bolt & Washer · 19 GI J Hook (new) · 20 Alu Monorail · 21 Solar Panels (new) · 22 ACDB Box · 23 DCDB Box · 24 AC Wire · 25 DC Wire · 26 Copper Bonded Earthing Rod · 27 Copper Bonded Lightning Arrester. Old ACDB&DCDB / AC&DC-wire combos split into separate products; descriptions otherwise reused from the old catalog where the product matched.
 Each: {sku, name, desc (1–2 sentence installer-focused), category, image, tags}.
-Categories (5): Clamps (7) · Base Plates & Brackets (4) · Fasteners & Hardware (5) · Rails & Structures (2) · Electrical & Earthing (5).
-Product images: 720×540 "studio shots" — frames auto-trimmed, tone-matched gradient backdrop, feathered edges, floor shadow.
-Adding product #24 = drop photo in images/products/ + append one block to PRODUCTS.
+Categories (6): Clamps (6) · Base Plates & Brackets (4) · Fasteners & Hardware (7) · Rails & Structures (2) · Solar Panels (1, added v12) · Electrical & Earthing (7).
+Product images: normalized to 720×540 4:3 — cover-crops for most, white-padded "contain" for tall shots (monorail, ACDB/DCDB, AC wire, lightning arrester), hand-picked crops for Water clips composite + earthing rod.
+Adding product #28 = drop photo in images/products/ + append one block to PRODUCTS.
 
 ## Page structure (top→bottom, v10)
 1. Topstrip (trust line + phone/email)
 2. Header: logo lockup w/ tagline · nav Home / About Us / **Products ▾ dropdown (5 categories → filters catalog)** / Contact Us · "Request a Quote" WhatsApp pill · shadow on scroll
 3. Hero: bg = user's sunset-rooftop photo (mirrored so sun glows right), kenburns + staggered load-in. H1: "Build on **Strength**.<br>Trusted for Performance." (user's copy verbatim; may want "Built"). Sub: "Premium solar mounting systems and accessories crafted for EPC companies, distributors and solar professionals." Buttons: Explore products / Contact us. (Kicker, chips, installers photo-card all REMOVED in v8.)
 4. Amber ticker marquee (bulk mfg ✦ fast delivery ✦ PAN India ✦ …)
-5. Featured slider (replaced stats band): SKUs 01, 05, 15, 08, 22 (hardcoded `FEATURED` list in main.js); photo left + navy info panel right; auto 4.5 s, arrows + dots, pause on hover/touch, stacks on mobile
-6. About: user's FULL factory collage + "Made in Jalandhar" badge; lede "Building Confidence. Supporting Clean Energy." + 4 paragraphs (user's copy)
+5. Featured slider (replaced stats band): SKUs 01, 04, 08, 07, 09 (hardcoded `FEATURED` list in main.js); photo left + navy info panel right; auto 4.5 s, arrows + dots, pause on hover/touch, stacks on mobile
+6. About: branded Solenix factory collage (user's "About us.jpeg", v11 — replaced old collage at images/factory.jpg) + "Made in Jalandhar" badge; lede "Building Confidence. Supporting Clean Energy." + 4 paragraphs (user's copy)
 7. Mission/Vision cards (navy card + amber-gradient card, user's copy)
 8. Our Values: 5 cards (Quality Without Compromise / Precision in Every Detail / Customer Partnership / Innovation / Integrity)
 9. Why Choose Solenix: 8-item ✓ checklist grid (user's list)
-10. Catalog: search box + category chips + result count + 23 cards (category pill, name, desc, SKU, WhatsApp "Get a quote")
+10. Catalog: search box + category chips + result count + 27 cards (category pill, name, desc, SKU, WhatsApp "Get a quote")
 11. CTA band: bg = user's turbines+panels photo. "Let's Build the Future of Solar Infrastructure" + user's line. Buttons: Request a Quote Today / Talk to our team
 12. Contact: Address/Phone/E-mail/Follow/Delivery blocks + "Send us a message" form (opens WhatsApp with composed message; no backend) + Google Map iframe
 13. Footer: 4 cols — brand+blurb / Quick links (incl. **Apply for Distributor** → WhatsApp prefilled) / Our products (auto from CATEGORIES) / Get in touch. Base line: © … · v10 · gold tagline
@@ -43,9 +44,9 @@ Motion: hero kenburns + .load-1/2/3 stagger; .reveal→.in-view scroll reveals (
 ## Files & build
 Repo root: `C:\Users\aayus\Solenix-Website\` (not a git repo yet). Layout:
 - `solenix-website/` — **editable multi-file source** (this is what deploys to GitHub Pages, with HIGH-quality images):
-  index.html · css/style.css · js/products.js · js/main.js · images/ (products/01–23.jpg, hero-bg.jpg, cta-bg.jpg, factory.jpg, logo-mark.png, favicon.png, solar-banner.jpg[unused], README.md)
-- `solenix-website-publish.html` — single-file bundle, images compressed (≈447 KB). For Claude's Publish button (≤~500 KB is the safe limit; 1.3 MB failed once).
-- `solenix-website-preview.html` — single-file bundle, full-quality images (~1.8 MB) for phone preview.
+  index.html · css/style.css · js/products.js · js/main.js · images/ (products/01–27.jpg, hero-bg.jpg, cta-bg.jpg, factory.jpg, logo-mark.png, favicon.png, solar-banner.jpg[unused], README.md)
+- `solenix-website-publish.html` — single-file bundle, images compressed (≈447 KB). For Claude's Publish button (≤~500 KB is the safe limit; 1.3 MB failed once). **STALE — still v10 with the old 23-product catalog.**
+- `solenix-website-preview.html` — single-file bundle, full-quality images (~1.8 MB) for phone preview. **STALE — still v10 with the old 23-product catalog.**
 - No build script lives in this repo. The two single-file bundles were produced by a `build_site.py` image-inlining/compression step that ran in a separate (Linux) authoring environment — to refresh them you must reconstruct that step (inline css/js, embed images as data URIs, compress the publish variant). Develop by opening/serving `solenix-website/` directly; no build needed for the deployable site.
 - After edits: bump the build tag in TWO places in index.html — the top comment `<!-- … build vN -->` (line 2) and the footer `<span class="build-tag">vN</span>`. Then regenerate the bundles if the user needs to re-publish.
 
