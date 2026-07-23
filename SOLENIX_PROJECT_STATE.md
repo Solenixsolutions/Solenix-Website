@@ -1,8 +1,8 @@
-# SOLENIX WEBSITE — PROJECT STATE (build v12)
+# SOLENIX WEBSITE — PROJECT STATE (build v13)
 
 ## Project
 Static website for Solenix Solutions (solar mounting hardware manufacturer, Jalandhar, Punjab).
-Target hosting: GitHub Pages (free). No frameworks; vanilla HTML/CSS/JS. Current build: **v12** (footer build-tag shows version).
+Hosting: **live on GitHub Pages at https://solenixsolutions.com** (custom domain via Cloudflare DNS, DNS-only/grey-cloud, HTTPS enforced). No frameworks; vanilla HTML/CSS/JS. Current build: **v13** (footer build-tag shows version). v13 also added SEO canonical + Open Graph/Twitter social-preview meta tags (og:image = hero-bg.jpg) so shared links render an image+title card.
 
 ## Company facts used on site
 - Phone/WhatsApp: +91 94171 22679 → links use https://wa.me/919417122679
@@ -57,4 +57,4 @@ Repo root: `C:\Users\aayus\Solenix-Website\` (not a git repo yet). Layout:
 
 ## Open items
 - Confirm headline wording: "Build on Strength" (current, verbatim) vs "Built on Strength".
-- GitHub Pages not yet deployed by user (steps in solenix-website/README.md; suggest domain solenixsolutions.in ₹800–1,000/yr).
+- ✅ Deployed & live: https://solenixsolutions.com (apex primary; www → apex). Domain bought on Cloudflare (registrar + DNS). DNS records are **DNS-only / grey-cloud**: apex A → GitHub Pages 185.199.108–111.153, www CNAME → solenixsolutions.github.io. GitHub Pages custom domain set via Pages API (`cname`), HTTPS cert approved + `https_enforced:true`. Deploy = push to main → deploy-pages.yml.
