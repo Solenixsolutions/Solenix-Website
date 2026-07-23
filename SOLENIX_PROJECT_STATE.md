@@ -1,8 +1,8 @@
-# SOLENIX WEBSITE — PROJECT STATE (build v13)
+# SOLENIX WEBSITE — PROJECT STATE (build v15)
 
 ## Project
 Static website for Solenix Solutions (solar mounting hardware manufacturer, Jalandhar, Punjab).
-Hosting: **live on GitHub Pages at https://solenixsolutions.com** (custom domain via Cloudflare DNS, DNS-only/grey-cloud, HTTPS enforced). No frameworks; vanilla HTML/CSS/JS. Current build: **v13** (footer build-tag shows version). v13 also added SEO canonical + Open Graph/Twitter social-preview meta tags (og:image = hero-bg.jpg) so shared links render an image+title card.
+Hosting: **live on GitHub Pages at https://solenixsolutions.com** (custom domain via Cloudflare DNS, DNS-only/grey-cloud, HTTPS enforced). No frameworks; vanilla HTML/CSS/JS. Current build: **v15** (footer build-tag shows version). v13 added SEO canonical + Open Graph/Twitter social-preview meta tags (og:image = hero-bg.jpg) so shared links render an image+title card. **v14** added GA4 analytics (property G-E77FC0LCBQ) + contact-event tracking. **v15** added the SEO / AI-visibility foundations — see the "SEO & AI visibility" section below.
 
 ## Company facts used on site
 - Phone/WhatsApp: +91 94171 22679 → links use https://wa.me/919417122679
@@ -42,18 +42,28 @@ Fonts (Google): Saira SemiCondensed (display 700/800) · Inter (body) · IBM Ple
 Motion: hero kenburns + .load-1/2/3 stagger; .reveal→.in-view scroll reveals (IntersectionObserver, JS in main.js); card hover lift + img zoom; all behind prefers-reduced-motion. Mobile: nav links hidden ≤960 px (chips still filter), slider stacks, no horizontal overflow.
 
 ## Files & build
-Repo root: `C:\Users\aayus\Solenix-Website\` (not a git repo yet). Layout:
+Repo root: `C:\Users\aayus\Solenix-Website\` (git repo → GitHub `Solenixsolutions/Solenix-Website`; push to `main` auto-deploys). Layout:
 - `solenix-website/` — **editable multi-file source** (this is what deploys to GitHub Pages, with HIGH-quality images):
   index.html · css/style.css · js/products.js · js/main.js · images/ (products/01–27.jpg, hero-bg.jpg, cta-bg.jpg, factory.jpg, logo-mark.png, favicon.png, solar-banner.jpg[unused], README.md)
 - `solenix-website-publish.html` — single-file bundle, images compressed (≈447 KB). For Claude's Publish button (≤~500 KB is the safe limit; 1.3 MB failed once). **STALE — still v10 with the old 23-product catalog.**
 - `solenix-website-preview.html` — single-file bundle, full-quality images (~1.8 MB) for phone preview. **STALE — still v10 with the old 23-product catalog.**
-- No build script lives in this repo. The two single-file bundles were produced by a `build_site.py` image-inlining/compression step that ran in a separate (Linux) authoring environment — to refresh them you must reconstruct that step (inline css/js, embed images as data URIs, compress the publish variant). Develop by opening/serving `solenix-website/` directly; no build needed for the deployable site.
+- The only build step is `solenix-website/tools/gen-seo.js` (SEO/AI generator; Node, no deps; also auto-runs in the deploy Action — see SEO section). Separately, the two single-file bundles were produced by a `build_site.py` image-inlining/compression step that ran in a separate (Linux) authoring environment — to refresh them you must reconstruct that step (inline css/js, embed images as data URIs, compress the publish variant). Develop by opening/serving `solenix-website/` directly; no build needed for the deployable site.
 - After edits: bump the build tag in TWO places in index.html — the top comment `<!-- … build vN -->` (line 2) and the footer `<span class="build-tag">vN</span>`. Then regenerate the bundles if the user needs to re-publish.
 
 ## Workflow learnings
 - User publishes via Claude's Publish button; every new build ⇒ they re-publish new file + unpublish old link. Footer build-tag = version check.
 - Raw index.html opened from Android Downloads (content://) can't load sibling files ⇒ single-file previews exist for that.
 - Content facts and exact copy are locked here — consult before rewording; keep this doc updated when structure changes.
+
+## SEO & AI visibility (v15 — implemented from SOLENIX_SEO_AI_PLAN.md)
+Generator `solenix-website/tools/gen-seo.js` reads `js/products.js` (single source of truth) and regenerates, between `<!-- GEN:… -->` markers in index.html: the 27 static product cards inside `#grid` (so crawlers / no-JS / AI clients see the catalog — main.js still re-renders them as the interactive layer), the `Product` `ItemList` JSON-LD, and the visible "Catalog updated <month year>" freshness line; it also writes `sitemap.xml` and `llms.txt`. Wired into `.github/workflows/deploy-pages.yml` (Node step before upload) so every push to main deploys freshly-generated output; also runnable locally (`node tools/gen-seo.js`). Idempotent.
+Shipped in v15:
+- **JSON-LD:** hand-written `Organization`+`LocalBusiness` block (NAP, phone, email, logo, Instagram `sameAs`, `@id` `#organization`) + generated 27-item `Product` `ItemList` (name/desc/sku/category/absolute image/brand "Solenix Solutions"). Both parse clean.
+- **Crawl/root files (all in `solenix-website/`, serve at domain root):** `robots.txt` (allow all + explicit GPTBot/ClaudeBot/PerplexityBot/Google-Extended/CCBot + Sitemap link), `sitemap.xml` (homepage now; grows with Part-3 pages), `llms.txt` (company brief + all 27 products by category), `CNAME` (`solenixsolutions.com` — survives Pages settings resets), `.nojekyll`.
+- **Non-JS catalog:** 27 cards pre-rendered into `#grid` + a `<noscript>` style that unhides `.reveal` content when JS is off.
+- **Perf (partial):** hero-bg.jpg `preload` + `fetchpriority="high"`. Still TODO (Part 2.6): WebP with JPEG fallback, self-hosted fonts.
+- **AEO/GEO:** one-sentence definitional opener in About ("Solenix Solutions is a manufacturer of solar mounting systems and accessories based in Jalandhar, Punjab…") for AI to quote verbatim; consistent entity name; llms.txt.
+Remaining ([HUMAN] / owner, from the plan): Google Search Console (verify via Cloudflare TXT + submit sitemap — do this first, now that sitemap ships), Google Business Profile (biggest local-B2B lever), Bing Webmaster + IndexNow, IndiaMART/TradeIndia/Justdial listings with identical NAP, LinkedIn page. As each social/listing/GBP URL goes live, add it to the `sameAs` array in the Organization JSON-LD (index.html, before `</body>`). Part 3 (per-product `/products/<slug>/` pages by growing gen-seo.js into a mini SSG) is the next big [AGENT] step but needs real spec/FAQ data from the owner.
 
 ## Open items
 - Confirm headline wording: "Build on Strength" (current, verbatim) vs "Built on Strength".

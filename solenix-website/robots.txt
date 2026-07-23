@@ -1,0 +1,25 @@
+# Solenix Solutions — https://solenixsolutions.com/
+# Solar mounting systems & accessories · Jalandhar, Punjab
+
+# Search engines — crawl everything
+User-agent: *
+Allow: /
+
+# AI assistants — being citable is the point for this business.
+# Explicitly welcome the major AI crawlers.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://solenixsolutions.com/sitemap.xml
