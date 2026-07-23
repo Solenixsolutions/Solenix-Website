@@ -113,6 +113,7 @@
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+      if (typeof gtag === "function") gtag("event", "enquiry_form_submit", {});
       const name = document.getElementById("f-name").value.trim();
       const phone = document.getElementById("f-phone").value.trim();
       const msg = document.getElementById("f-msg").value.trim();
@@ -121,6 +122,23 @@
       window.open("https://wa.me/919417122679?text=" + encodeURIComponent(text), "_blank", "noopener");
     });
   }
+
+  /* ----- decision metrics: contact-action events (GA4) -----
+     One delegated listener records every WhatsApp / call / e-mail / distributor
+     click as a GA4 event — the metric the 1-year domain review hinges on.
+     Guarded by `typeof gtag` so the site still works if analytics is blocked or
+     not configured. Event names are read verbatim by the review; see METRICS_LOG.md. */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a");
+    if (!a || typeof gtag !== "function") return;
+    var href = a.getAttribute("href") || "";
+    var loc = a.closest("section,header,footer");
+    var where = loc ? (loc.id || loc.className.split(" ")[0]) : "page";
+    if (href.indexOf("wa.me") > -1)         gtag("event", "whatsapp_click", { link_location: where });
+    else if (href.indexOf("tel:") === 0)    gtag("event", "call_click",     { link_location: where });
+    else if (href.indexOf("mailto:") === 0) gtag("event", "email_click",    { link_location: where });
+    if ((a.textContent || "").indexOf("Distributor") > -1) gtag("event", "distributor_click", { link_location: where });
+  });
 
   /* ----- scroll reveals ----- */
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
