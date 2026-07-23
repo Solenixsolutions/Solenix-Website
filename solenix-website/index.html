@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!-- Solenix Solutions website · build v16 -->
+<!-- Solenix Solutions website · build v17 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Preload the hero image (LCP element) so it paints sooner -->
-  <link rel="preload" as="image" href="images/hero-bg.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="images/hero-bg.webp" type="image/webp" fetchpriority="high" />
   <!-- No-JS / non-rendering crawlers: reveal content that JS would otherwise animate in -->
   <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
 
@@ -33,9 +33,9 @@
   <meta name="twitter:title" content="Solenix Solutions — Solar Mounting Systems &amp; Accessories" />
   <meta name="twitter:description" content="Power That Holds. Premium solar mounting systems &amp; accessories, manufactured in Jalandhar, Punjab." />
   <meta name="twitter:image" content="https://solenixsolutions.com/images/hero-bg.jpg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Saira+SemiCondensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+  <!-- Self-hosted fonts (no third-party CDN); preload the two used above the fold -->
+  <link rel="preload" as="font" type="font/woff2" href="fonts/inter.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="fonts/saira-semicondensed-800.woff2" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/png" href="images/favicon.png" />
 </head>
@@ -122,7 +122,10 @@
 <section class="about" id="about">
   <div class="about-inner">
     <div class="about-visual reveal">
-      <img class="about-main" src="images/factory.jpg" alt="Solenix Solutions solar mounting hardware manufacturing in Jalandhar — roll-forming line, profile cutting and finished channel stock" loading="lazy" />
+      <picture>
+        <source srcset="images/factory.webp" type="image/webp" />
+        <img class="about-main" src="images/factory.jpg" alt="Solenix Solutions solar mounting hardware manufacturing in Jalandhar — roll-forming line, profile cutting and finished channel stock" loading="lazy" />
+      </picture>
     </div>
     <div class="about-copy reveal">
       <p class="kicker">Who we are</p>
@@ -231,7 +234,10 @@
     <!-- GEN:GRID:START — pre-rendered from js/products.js by tools/gen-seo.js for crawlers & no-JS; main.js re-renders this as the interactive (search/filter) layer. Do not hand-edit. -->
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/01.jpg" alt="Galvanized GI Solgrip clamp for solar panel mounting" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/01.webp" type="image/webp" />
+            <img src="images/products/01.jpg" alt="Galvanized GI Solgrip clamp for solar panel mounting" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Clamps</span>
@@ -247,7 +253,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/02.jpg" alt="Hot-dip galvanized mid clamp for solar modules" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/02.webp" type="image/webp" />
+            <img src="images/products/02.jpg" alt="Hot-dip galvanized mid clamp for solar modules" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Clamps</span>
@@ -263,7 +272,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/03.jpg" alt="Galvanized spring channel nut for strut channel" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/03.webp" type="image/webp" />
+            <img src="images/products/03.jpg" alt="Galvanized spring channel nut for strut channel" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Fasteners &amp; Hardware</span>
@@ -279,7 +291,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/04.jpg" alt="Galvanized base plate for strut channel uprights" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/04.webp" type="image/webp" />
+            <img src="images/products/04.jpg" alt="Galvanized base plate for strut channel uprights" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Base Plates &amp; Brackets</span>
@@ -295,7 +310,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/05.jpg" alt="Wedge expansion anchor bolt for fixing into concrete" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/05.webp" type="image/webp" />
+            <img src="images/products/05.jpg" alt="Wedge expansion anchor bolt for fixing into concrete" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Fasteners &amp; Hardware</span>
@@ -311,7 +329,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/06.jpg" alt="Rawl anchor bolt for concrete and masonry fixing" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/06.webp" type="image/webp" />
+            <img src="images/products/06.jpg" alt="Rawl anchor bolt for concrete and masonry fixing" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Fasteners &amp; Hardware</span>
@@ -327,7 +348,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/07.jpg" alt="Snap-on drainage water clips for solar panel frames" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/07.webp" type="image/webp" />
+            <img src="images/products/07.jpg" alt="Snap-on drainage water clips for solar panel frames" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Fasteners &amp; Hardware</span>
@@ -343,7 +367,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/08.jpg" alt="JSW and Apollo GI rafters for solar structures" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/08.webp" type="image/webp" />
+            <img src="images/products/08.jpg" alt="JSW and Apollo GI rafters for solar structures" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Rails &amp; Structures</span>
@@ -359,7 +386,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/09.jpg" alt="Weatherproof MC4 DC connectors for solar cabling" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/09.webp" type="image/webp" />
+            <img src="images/products/09.jpg" alt="Weatherproof MC4 DC connectors for solar cabling" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Electrical &amp; Earthing</span>
@@ -375,7 +405,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/10.jpg" alt="Aluminium mid clamp for solar panels on a mounting rail" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/10.webp" type="image/webp" />
+            <img src="images/products/10.jpg" alt="Aluminium mid clamp for solar panels on a mounting rail" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Clamps</span>
@@ -391,7 +424,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/11.jpg" alt="Galvanized mid clamp kit with spring nut and bolt" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/11.webp" type="image/webp" />
+            <img src="images/products/11.jpg" alt="Galvanized mid clamp kit with spring nut and bolt" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Clamps</span>
@@ -407,7 +443,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/12.jpg" alt="Galvanized end clamp kit for a solar panel row" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/12.webp" type="image/webp" />
+            <img src="images/products/12.jpg" alt="Galvanized end clamp kit for a solar panel row" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Clamps</span>
@@ -423,7 +462,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/13.jpg" alt="Anti-theft security clamp for installed solar panels" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/13.webp" type="image/webp" />
+            <img src="images/products/13.jpg" alt="Anti-theft security clamp for installed solar panels" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Clamps</span>
@@ -439,7 +481,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/14.jpg" alt="Galvanized welded B4 base plate for structure legs" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/14.webp" type="image/webp" />
+            <img src="images/products/14.jpg" alt="Galvanized welded B4 base plate for structure legs" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Base Plates &amp; Brackets</span>
@@ -455,7 +500,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/15.jpg" alt="Galvanized base plate for C-lip structure profiles" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/15.webp" type="image/webp" />
+            <img src="images/products/15.jpg" alt="Galvanized base plate for C-lip structure profiles" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Base Plates &amp; Brackets</span>
@@ -471,7 +519,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/16.jpg" alt="Galvanized adjustable tilt angle bracket for mounting structures" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/16.webp" type="image/webp" />
+            <img src="images/products/16.jpg" alt="Galvanized adjustable tilt angle bracket for mounting structures" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Base Plates &amp; Brackets</span>
@@ -487,7 +538,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/17.jpg" alt="Galvanized strut jointer connecting two channel lengths" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/17.webp" type="image/webp" />
+            <img src="images/products/17.jpg" alt="Galvanized strut jointer connecting two channel lengths" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Fasteners &amp; Hardware</span>
@@ -503,7 +557,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/18.jpg" alt="Galvanized nut, bolt and washer hardware sets" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/18.webp" type="image/webp" />
+            <img src="images/products/18.jpg" alt="Galvanized nut, bolt and washer hardware sets" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Fasteners &amp; Hardware</span>
@@ -519,7 +576,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/19.jpg" alt="Galvanized J-hook bolts for fixing structures to roofs" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/19.webp" type="image/webp" />
+            <img src="images/products/19.jpg" alt="Galvanized J-hook bolts for fixing structures to roofs" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Fasteners &amp; Hardware</span>
@@ -535,7 +595,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/20.jpg" alt="Low-profile aluminium mounting rail for solar panels" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/20.webp" type="image/webp" />
+            <img src="images/products/20.jpg" alt="Low-profile aluminium mounting rail for solar panels" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Rails &amp; Structures</span>
@@ -551,7 +614,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/21.jpg" alt="High-efficiency solar PV panels supplied with mounting hardware" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/21.webp" type="image/webp" />
+            <img src="images/products/21.jpg" alt="High-efficiency solar PV panels supplied with mounting hardware" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Solar Panels</span>
@@ -567,7 +633,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/22.jpg" alt="ACDB AC distribution box with MCB and surge protection" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/22.webp" type="image/webp" />
+            <img src="images/products/22.jpg" alt="ACDB AC distribution box with MCB and surge protection" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Electrical &amp; Earthing</span>
@@ -583,7 +652,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/23.jpg" alt="DCDB DC distribution box with fuse and surge protection" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/23.webp" type="image/webp" />
+            <img src="images/products/23.jpg" alt="DCDB DC distribution box with fuse and surge protection" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Electrical &amp; Earthing</span>
@@ -599,7 +671,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/24.jpg" alt="Multi-strand AC cable for solar inverter wiring" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/24.webp" type="image/webp" />
+            <img src="images/products/24.jpg" alt="Multi-strand AC cable for solar inverter wiring" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Electrical &amp; Earthing</span>
@@ -615,7 +690,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/25.jpg" alt="Solar-grade DC cable for outdoor string wiring" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/25.webp" type="image/webp" />
+            <img src="images/products/25.jpg" alt="Solar-grade DC cable for outdoor string wiring" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Electrical &amp; Earthing</span>
@@ -631,7 +709,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/26.jpg" alt="Copper-bonded earthing rod for solar array grounding" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/26.webp" type="image/webp" />
+            <img src="images/products/26.jpg" alt="Copper-bonded earthing rod for solar array grounding" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Electrical &amp; Earthing</span>
@@ -647,7 +728,10 @@
       </article>
       <article class="card reveal">
         <div class="card-media">
-          <img src="images/products/27.jpg" alt="Copper-bonded rooftop lightning arrester for solar systems" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="images/products/27.webp" type="image/webp" />
+            <img src="images/products/27.jpg" alt="Copper-bonded rooftop lightning arrester for solar systems" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">Electrical &amp; Earthing</span>
@@ -771,7 +855,7 @@
     </div>
   </div>
   <div class="footer-base">
-    <span>© <span id="year"></span> Solenix Solutions · Jalandhar, Punjab · <span class="build-tag">v16</span></span>
+    <span>© <span id="year"></span> Solenix Solutions · Jalandhar, Punjab · <span class="build-tag">v17</span></span>
     <span class="tagline-gold">— Power That Holds —</span>
   </div>
 </footer>
@@ -809,7 +893,7 @@
     "addressCountry": "IN"
   },
   "areaServed": "IN",
-  "sameAs": ["https://www.instagram.com/solenixsolutions"]
+  "sameAs": ["https://www.instagram.com/solenixsolutions", "https://share.google/l9fHttXxOXzvQS9k4"]
 }
 </script>
 <!-- GEN:PRODUCTS-LD:START — ItemList of all products, generated from js/products.js by tools/gen-seo.js. Do not hand-edit. -->

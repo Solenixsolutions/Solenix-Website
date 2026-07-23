@@ -76,7 +76,10 @@
     return `
       <article class="card reveal">
         <div class="card-media">
-          <img src="${p.image}" alt="${p.alt || p.name}" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="${p.image.replace(/\.jpg$/i, ".webp")}" type="image/webp" />
+            <img src="${p.image}" alt="${p.alt || p.name}" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">${p.category}</span>
@@ -167,7 +170,7 @@
     const feats = FEATURED.map((s) => PRODUCTS.find((p) => p.sku === s)).filter(Boolean);
     slidesEl.innerHTML = feats.map((p, i) => `
       <div class="slide${i === 0 ? " active" : ""}" role="group" aria-label="${i + 1} of ${feats.length}">
-        <div class="slide-media"><img src="${p.image}" alt="${p.alt || p.name}" ${i === 0 ? "" : 'loading="lazy"'} width="720" height="540" /></div>
+        <div class="slide-media"><picture><source srcset="${p.image.replace(/\.jpg$/i, ".webp")}" type="image/webp" /><img src="${p.image}" alt="${p.alt || p.name}" ${i === 0 ? "" : 'loading="lazy"'} width="720" height="540" /></picture></div>
         <div class="slide-info">
           <p class="kicker">Featured · SLX-${p.sku}</p>
           <h3>${p.name}</h3>

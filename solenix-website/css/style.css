@@ -3,6 +3,20 @@
    Navy #16324F / Amber #F2A414 / Zinc greys / Saira + Inter + Plex Mono
    ============================================================ */
 
+/* ---------- self-hosted webfonts (replaces the Google Fonts CDN) ----------
+   Latin subset only (site copy is Latin-script); font-display:swap keeps text
+   visible while the file loads. Files live in ../fonts/. Inter ships a single
+   variable woff2 for the whole 400-700 range; Saira Semi Condensed ships one
+   file per weight. NOTE: the family is "Saira Semi Condensed" on Google Fonts
+   (with a space) — the old CDN link mis-spelled it "SemiCondensed", so the
+   display font silently never loaded; self-hosting it correctly fixes that. */
+@font-face { font-family: "Saira SemiCondensed"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/saira-semicondensed-500.woff2") format("woff2"); }
+@font-face { font-family: "Saira SemiCondensed"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/saira-semicondensed-600.woff2") format("woff2"); }
+@font-face { font-family: "Saira SemiCondensed"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/saira-semicondensed-700.woff2") format("woff2"); }
+@font-face { font-family: "Saira SemiCondensed"; font-style: normal; font-weight: 800; font-display: swap; src: url("../fonts/saira-semicondensed-800.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("../fonts/inter.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/ibm-plex-mono-500.woff2") format("woff2"); }
+
 :root {
   --ink-950: #0a1622;
   --navy-900: #0f2438;
@@ -28,6 +42,7 @@
 html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 body { font-family: var(--body); color: #23303c; background: var(--paper); line-height: 1.65; font-size: 16px; }
 img { display: block; max-width: 100%; }
+picture { display: contents; } /* wrapper stays layout-neutral so <img> sizing rules still apply */
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--amber-500); outline-offset: 2px; }
 
@@ -136,7 +151,8 @@ h2 { font-size: clamp(30px, 4.4vw, 46px); font-weight: 700; color: var(--navy-70
 .hero { position: relative; color: var(--white); overflow: hidden; }
 .hero-bg {
   position: absolute; inset: 0;
-  background: url("../images/hero-bg.jpg") center 65% / cover no-repeat;
+  background: url("../images/hero-bg.jpg") center 65% / cover no-repeat; /* fallback for browsers without image-set() */
+  background-image: image-set(url("../images/hero-bg.webp") type("image/webp"), url("../images/hero-bg.jpg") type("image/jpeg"));
   transform: scale(1.06);
 }
 .hero::before {
@@ -391,7 +407,7 @@ h2 { font-size: clamp(30px, 4.4vw, 46px); font-weight: 700; color: var(--navy-70
 
 /* ---------- CTA band ---------- */
 .cta { position: relative; color: var(--white); overflow: hidden; text-align: center; }
-.cta-bg { position: absolute; inset: 0; background: url("../images/cta-bg.jpg") center / cover no-repeat; transform: scale(1.04); }
+.cta-bg { position: absolute; inset: 0; background: url("../images/cta-bg.jpg") center / cover no-repeat; background-image: image-set(url("../images/cta-bg.webp") type("image/webp"), url("../images/cta-bg.jpg") type("image/jpeg")); transform: scale(1.04); }
 .cta::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,22,34,.86), rgba(15,36,56,.8)); }
 .cta-inner { position: relative; max-width: 760px; margin: 0 auto; padding: clamp(64px, 9vw, 110px) var(--pad); }
 .cta h2 { color: var(--white); margin-bottom: 12px; }

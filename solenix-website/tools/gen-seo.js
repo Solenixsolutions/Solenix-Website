@@ -44,6 +44,7 @@ const MONTH_YEAR = MONTHS[now.getMonth()] + ' ' + now.getFullYear();
 /* ---- helpers ---- */
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const escAttr = (s) => esc(s).replace(/"/g, '&quot;');
+const webpOf = (img) => img.replace(/\.jpg$/i, '.webp');
 const waFor = (p) => 'https://wa.me/919417122679?text=' +
   encodeURIComponent("Hi Solenix Solutions, I'd like a quote for: " + p.name + ' (item ' + p.sku + ').');
 
@@ -66,7 +67,10 @@ function splice(html, name, inner) {
 function cardHTML(p) {
   return `      <article class="card reveal">
         <div class="card-media">
-          <img src="${p.image}" alt="${escAttr(p.alt || p.name)}" loading="lazy" width="720" height="540" />
+          <picture>
+            <source srcset="${webpOf(p.image)}" type="image/webp" />
+            <img src="${p.image}" alt="${escAttr(p.alt || p.name)}" loading="lazy" width="720" height="540" />
+          </picture>
         </div>
         <div class="card-body">
           <span class="card-cat">${esc(p.category)}</span>
