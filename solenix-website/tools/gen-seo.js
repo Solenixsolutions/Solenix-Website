@@ -66,7 +66,7 @@ function splice(html, name, inner) {
 function cardHTML(p) {
   return `      <article class="card reveal">
         <div class="card-media">
-          <img src="${p.image}" alt="${escAttr(p.name)}" loading="lazy" width="720" height="540" />
+          <img src="${p.image}" alt="${escAttr(p.alt || p.name)}" loading="lazy" width="720" height="540" />
         </div>
         <div class="card-body">
           <span class="card-cat">${esc(p.category)}</span>

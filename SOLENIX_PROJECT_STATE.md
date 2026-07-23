@@ -1,8 +1,8 @@
-# SOLENIX WEBSITE — PROJECT STATE (build v15)
+# SOLENIX WEBSITE — PROJECT STATE (build v16)
 
 ## Project
 Static website for Solenix Solutions (solar mounting hardware manufacturer, Jalandhar, Punjab).
-Hosting: **live on GitHub Pages at https://solenixsolutions.com** (custom domain via Cloudflare DNS, DNS-only/grey-cloud, HTTPS enforced). No frameworks; vanilla HTML/CSS/JS. Current build: **v15** (footer build-tag shows version). v13 added SEO canonical + Open Graph/Twitter social-preview meta tags (og:image = hero-bg.jpg) so shared links render an image+title card. **v14** added GA4 analytics (property G-E77FC0LCBQ) + contact-event tracking. **v15** added the SEO / AI-visibility foundations — see the "SEO & AI visibility" section below.
+Hosting: **live on GitHub Pages at https://solenixsolutions.com** (custom domain via Cloudflare DNS, DNS-only/grey-cloud, HTTPS enforced). No frameworks; vanilla HTML/CSS/JS. Current build: **v16** (footer build-tag shows version). v13 added SEO canonical + Open Graph/Twitter social-preview meta tags (og:image = hero-bg.jpg) so shared links render an image+title card. **v14** added GA4 analytics (property G-E77FC0LCBQ) + contact-event tracking. **v15** added the SEO / AI-visibility foundations; **v16** ran a site-wide image `alt` audit (Part 2.7) — see the "SEO & AI visibility" section below.
 
 ## Company facts used on site
 - Phone/WhatsApp: +91 94171 22679 → links use https://wa.me/919417122679
@@ -15,7 +15,7 @@ Hosting: **live on GitHub Pages at https://solenixsolutions.com** (custom domain
 ## Products (js/products.js — single source of truth)
 **v11 replaced the old 23-product PDF catalog with user-supplied photos; v12 completed the range from the user's "Solar products" folder (July 2026, moved into the site and deleted).** Now 27 products.
 SKUs: 01 GI Solgrip Clamp · 02 HDG Mid Clamp · 03 GI Spring Nut · 04 GI Strut Base Plate · 05 Wedge Anchor Fastener · 06 Rawl Anchor Fastener · 07 Water Clips · 08 Rafters JSW/Apollo · 09 MC4 Connectors · 10 Alu Mid Clamp · 11 GI Mid Clamp · 12 GI End Clamp · 13 Anti-Theft Clamp · 14 GI B4 Base Plate · 15 GI C Lip Base Plate · 16 GI Degree Angle · 17 GI Strut Jointer · 18 GI Nut Bolt & Washer · 19 GI J Hook (new) · 20 Alu Monorail · 21 Solar Panels (new) · 22 ACDB Box · 23 DCDB Box · 24 AC Wire · 25 DC Wire · 26 Copper Bonded Earthing Rod · 27 Copper Bonded Lightning Arrester. Old ACDB&DCDB / AC&DC-wire combos split into separate products; descriptions otherwise reused from the old catalog where the product matched.
-Each: {sku, name, desc (1–2 sentence installer-focused), category, image, tags}.
+Each: {sku, name, desc (1–2 sentence installer-focused), category, image, alt (short descriptive image alt — optional, falls back to name), tags}.
 Categories (6): Clamps (6) · Base Plates & Brackets (4) · Fasteners & Hardware (7) · Rails & Structures (2) · Solar Panels (1, added v12) · Electrical & Earthing (7).
 Product images: normalized to 720×540 4:3 — cover-crops for most, white-padded "contain" for tall shots (monorail, ACDB/DCDB, AC wire, lightning arrester), hand-picked crops for Water clips composite + earthing rod.
 Adding product #28 = drop photo in images/products/ + append one block to PRODUCTS.
@@ -63,6 +63,7 @@ Shipped in v15:
 - **Non-JS catalog:** 27 cards pre-rendered into `#grid` + a `<noscript>` style that unhides `.reveal` content when JS is off.
 - **Perf (partial):** hero-bg.jpg `preload` + `fetchpriority="high"`. Still TODO (Part 2.6): WebP with JPEG fallback, self-hosted fonts.
 - **AEO/GEO:** one-sentence definitional opener in About ("Solenix Solutions is a manufacturer of solar mounting systems and accessories based in Jalandhar, Punjab…") for AI to quote verbatim; consistent entity name; llms.txt.
+- **Image alt SEO (Part 2.7, v16):** every product image carries a concise descriptive `alt` — new optional `alt` field in `products.js`, rendered by both `cardHTML`s and the featured slider via `p.alt || p.name`, so it can't drift from the catalog. Factory alt refined (now names Jalandhar); header logo stays `alt=""` on purpose (decorative — the brand link already has `aria-label="Solenix Solutions home"` + visible name text); map iframe already carries a descriptive `title`. Still TODO in Part 2.6: WebP images + self-hosted fonts.
 Remaining ([HUMAN] / owner, from the plan): Google Search Console (verify via Cloudflare TXT + submit sitemap — do this first, now that sitemap ships), Google Business Profile (biggest local-B2B lever), Bing Webmaster + IndexNow, IndiaMART/TradeIndia/Justdial listings with identical NAP, LinkedIn page. As each social/listing/GBP URL goes live, add it to the `sameAs` array in the Organization JSON-LD (index.html, before `</body>`). Part 3 (per-product `/products/<slug>/` pages by growing gen-seo.js into a mini SSG) is the next big [AGENT] step but needs real spec/FAQ data from the owner.
 
 ## Open items
